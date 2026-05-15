@@ -1370,72 +1370,79 @@
     line-height: 1.55;
   }
 
-  /* Right column: form card */
+  /* Right column: form card (dark green treatment) */
   .form-card {
-    background: var(--white);
-    border: 1px solid var(--stroke-green);
-    border-radius: 20px;
-    padding: 40px;
-    box-shadow: 0 1px 0 var(--stroke-green), 0 24px 48px -24px rgba(10, 26, 16, 0.18);
+    background: var(--green-700);
+    border: none;
+    border-radius: 24px;
+    padding: 44px 40px;
+    box-shadow: 0 24px 60px -24px rgba(10, 26, 16, 0.35);
     position: sticky;
     top: 32px;
+    color: var(--white);
   }
   .form-card h2 {
     font-family: Georgia, serif;
-    font-size: 30px;
+    font-size: 32px;
     line-height: 1.15;
     letter-spacing: -0.02em;
-    color: var(--near-black);
-    margin-bottom: 10px;
+    color: var(--white);
+    margin-bottom: 12px;
   }
   .form-card > p {
-    color: var(--text-secondary);
+    color: rgba(255, 255, 255, 0.72);
     font-size: 14px;
     margin-bottom: 28px;
   }
 
-  .lead-form { display: flex; flex-direction: column; gap: 18px; }
-  .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-  .form-field { display: flex; flex-direction: column; gap: 6px; }
-  .form-field label {
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--near-black);
-    letter-spacing: -0.005em;
+  /* Visually hidden labels (kept for screen readers) */
+  .sr-only {
+    position: absolute;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
   }
-  .form-field label sup { color: var(--risk-red); font-weight: 700; margin-left: 2px; }
+
+  .lead-form { display: flex; flex-direction: column; gap: 14px; }
+  .form-field { display: flex; flex-direction: column; }
   .form-field input,
   .form-field select {
     width: 100%;
-    padding: 12px 14px;
-    border: 1px solid var(--stroke-green);
+    padding: 18px 20px;
+    border: 1px solid transparent;
     border-radius: 10px;
-    background: var(--cream);
+    background: var(--white);
     font-family: inherit;
-    font-size: 15px;
+    font-size: 16px;
     color: var(--near-black);
-    transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
   }
-  .form-field input::placeholder { color: var(--text-tertiary); }
+  .form-field input::placeholder { color: #6B7269; }
+  .form-field select { color: #6B7269; }
+  .form-field select.has-value { color: var(--near-black); }
+  .form-field select option { color: var(--near-black); }
+  .form-field select option[value=""] { color: #6B7269; }
   .form-field input:focus,
   .form-field select:focus {
     outline: none;
-    border-color: var(--green-500);
-    background: var(--white);
-    box-shadow: 0 0 0 3px rgba(15, 106, 58, 0.12);
+    border-color: var(--interaction-deep);
+    box-shadow: 0 0 0 3px rgba(95, 255, 138, 0.25);
   }
   .form-field select {
     appearance: none;
     -webkit-appearance: none;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%230A1A10' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
-    background-position: right 14px center;
-    padding-right: 36px;
+    background-position: right 20px center;
+    padding-right: 44px;
   }
-  .form-submit { margin-top: 6px; width: 100%; }
+  .form-submit { margin-top: 8px; width: 100%; }
   .form-fine-print {
     font-size: 12px;
-    color: var(--text-tertiary);
+    color: rgba(255, 255, 255, 0.55);
     margin-top: 4px;
     text-align: center;
   }
@@ -1443,13 +1450,14 @@
   .form-success {
     text-align: center;
     padding: 20px 0;
+    color: var(--white);
   }
   .form-success h3 {
     font-size: 24px;
-    color: var(--near-black);
+    color: var(--white);
     margin-bottom: 12px;
   }
-  .form-success p { color: var(--text-secondary); font-size: 15px; }
+  .form-success p { color: rgba(255, 255, 255, 0.72); font-size: 15px; }
 
   @media (max-width: 900px) {
     .form-section { padding: 24px 20px 60px; }
@@ -1570,24 +1578,18 @@
       <p>Tell us about your business. We&rsquo;ll deliver your custom 360 AEO Scorecard within 5 business days.</p>
 
       <form class="lead-form" id="lead-form" novalidate>
-        <div class="form-row-2">
-          <div class="form-field">
-            <label for="firstName">First name<sup>*</sup></label>
-            <input type="text" id="firstName" name="firstName" autocomplete="given-name" required>
-          </div>
-          <div class="form-field">
-            <label for="lastName">Last name<sup>*</sup></label>
-            <input type="text" id="lastName" name="lastName" autocomplete="family-name" required>
-          </div>
+        <div class="form-field">
+          <label class="sr-only" for="name">Name (required)</label>
+          <input type="text" id="name" name="name" autocomplete="name" placeholder="Name*" required>
         </div>
         <div class="form-field">
-          <label for="email">Business email<sup>*</sup></label>
-          <input type="email" id="email" name="email" autocomplete="email" placeholder="you@company.com" required>
+          <label class="sr-only" for="email">Work email (required)</label>
+          <input type="email" id="email" name="email" autocomplete="email" placeholder="Work Email*" required>
         </div>
         <div class="form-field">
-          <label for="spend">Estimated monthly spend on Content / SEO<sup>*</sup></label>
+          <label class="sr-only" for="spend">Estimated monthly spend on Content / SEO (required)</label>
           <select id="spend" name="spend" required>
-            <option value="">Select a range</option>
+            <option value="" disabled selected>Estimated monthly spend on Content / SEO*</option>
             <option>Less than $5K / month</option>
             <option>$5K &ndash; $20K / month</option>
             <option>$20K &ndash; $50K / month</option>
@@ -1596,9 +1598,9 @@
           </select>
         </div>
         <div class="form-field">
-          <label for="employees">Number of employees<sup>*</sup></label>
+          <label class="sr-only" for="employees">Number of employees (required)</label>
           <select id="employees" name="employees" required>
-            <option value="">Organization size</option>
+            <option value="" disabled selected>Number of employees*</option>
             <option>1 &ndash; 10</option>
             <option>11 &ndash; 50</option>
             <option>51 &ndash; 200</option>
@@ -1606,6 +1608,19 @@
             <option>501 &ndash; 1,000</option>
             <option>1,001 &ndash; 5,000</option>
             <option>5,000+</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label class="sr-only" for="source">How did you hear about AirOps? (required)</label>
+          <select id="source" name="source" required>
+            <option value="" disabled selected>How did you hear about AirOps?*</option>
+            <option>Search engine</option>
+            <option>AI assistant (ChatGPT, Perplexity, Claude, etc.)</option>
+            <option>Social media (LinkedIn, X, etc.)</option>
+            <option>Referred by a colleague</option>
+            <option>Event or conference</option>
+            <option>Podcast or newsletter</option>
+            <option>Other</option>
           </select>
         </div>
         <button type="submit" class="btn btn-primary form-submit">Request my scorecard &rarr;</button>
@@ -1687,6 +1702,13 @@
     const form = document.getElementById('lead-form');
     const success = document.getElementById('form-success');
     if (!form || !success) return;
+
+    // Color dropdowns black once a real option is picked
+    form.querySelectorAll('select').forEach(function (sel) {
+      sel.addEventListener('change', function () {
+        sel.classList.toggle('has-value', !!sel.value);
+      });
+    });
 
     form.addEventListener('submit', function (e) {
       e.preventDefault();
