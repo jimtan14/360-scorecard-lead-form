@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AEO Strategy Scorecard — Hex.tech | AirOps</title>
+<title>Get your 360 AEO Strategy Scorecard | AirOps</title>
 <link rel="shortcut icon" href="assets/favicon.png" type="image/png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1294,16 +1294,171 @@
   .radar-svg .axis-label { font-family: 'DM Mono', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; fill: var(--text-secondary); transition: fill 0.2s ease, font-weight 0.2s ease; }
   .radar-svg .axis-label.active { fill: var(--near-black); font-weight: 700; }
 
+  /* ===== LEAD FORM SECTION ===== */
+  .form-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 32px 80px;
+  }
+  .form-section-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    align-items: start;
+  }
+
+  /* Left column: report visual + value points */
+  .form-visual-col { display: flex; flex-direction: column; gap: 48px; }
+
+  .report-book {
+    position: relative;
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+    aspect-ratio: 4 / 5;
+    filter: drop-shadow(0 24px 48px rgba(10, 26, 16, 0.18)) drop-shadow(0 4px 12px rgba(10, 26, 16, 0.08));
+    transform: rotate(-2deg);
+    transition: transform 0.4s ease;
+  }
+  .report-book:hover { transform: rotate(0deg) translateY(-4px); }
+  .report-book svg { width: 100%; height: 100%; display: block; }
+
+  .value-points { display: flex; flex-direction: column; gap: 20px; }
+  .value-eyebrow { color: var(--green-500); }
+  .value-title {
+    font-family: Georgia, serif;
+    font-size: 32px;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--near-black);
+  }
+  .value-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 18px; }
+  .value-list li {
+    display: grid;
+    grid-template-columns: 32px 1fr;
+    gap: 16px;
+    padding: 18px 0;
+    border-top: 1px solid var(--stroke-green);
+  }
+  .value-list li:last-child { border-bottom: 1px solid var(--stroke-green); }
+  .value-num {
+    width: 32px;
+    height: 32px;
+    border-radius: 999px;
+    background: var(--green-700);
+    color: var(--white);
+    font-family: 'DM Mono', 'Courier New', monospace;
+    font-size: 13px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .value-list strong {
+    display: block;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--near-black);
+    margin-bottom: 4px;
+  }
+  .value-list p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.55;
+  }
+
+  /* Right column: form card */
+  .form-card {
+    background: var(--white);
+    border: 1px solid var(--stroke-green);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 1px 0 var(--stroke-green), 0 24px 48px -24px rgba(10, 26, 16, 0.18);
+    position: sticky;
+    top: 32px;
+  }
+  .form-card h2 {
+    font-family: Georgia, serif;
+    font-size: 30px;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--near-black);
+    margin-bottom: 10px;
+  }
+  .form-card > p {
+    color: var(--text-secondary);
+    font-size: 14px;
+    margin-bottom: 28px;
+  }
+
+  .lead-form { display: flex; flex-direction: column; gap: 18px; }
+  .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .form-field { display: flex; flex-direction: column; gap: 6px; }
+  .form-field label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--near-black);
+    letter-spacing: -0.005em;
+  }
+  .form-field label sup { color: var(--risk-red); font-weight: 700; margin-left: 2px; }
+  .form-field input,
+  .form-field select {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid var(--stroke-green);
+    border-radius: 10px;
+    background: var(--cream);
+    font-family: inherit;
+    font-size: 15px;
+    color: var(--near-black);
+    transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  }
+  .form-field input::placeholder { color: var(--text-tertiary); }
+  .form-field input:focus,
+  .form-field select:focus {
+    outline: none;
+    border-color: var(--green-500);
+    background: var(--white);
+    box-shadow: 0 0 0 3px rgba(15, 106, 58, 0.12);
+  }
+  .form-field select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%230A1A10' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 36px;
+  }
+  .form-submit { margin-top: 6px; width: 100%; }
+  .form-fine-print {
+    font-size: 12px;
+    color: var(--text-tertiary);
+    margin-top: 4px;
+    text-align: center;
+  }
+
+  .form-success {
+    text-align: center;
+    padding: 20px 0;
+  }
+  .form-success h3 {
+    font-size: 24px;
+    color: var(--near-black);
+    margin-bottom: 12px;
+  }
+  .form-success p { color: var(--text-secondary); font-size: 15px; }
+
   @media (max-width: 900px) {
-    .score-section, .radar-card { grid-template-columns: 1fr; }
-    .metrics-grid { grid-template-columns: repeat(2, 1fr); }
-    .gated-metrics { grid-template-columns: 1fr; }
-    .risks-grid, .playbooks-grid { grid-template-columns: 1fr; }
-    .risk-card, .playbook-card { border-right: none; border-bottom: 1px solid var(--stroke-green); }
+    .form-section { padding: 24px 20px 60px; }
+    .form-section-inner { grid-template-columns: 1fr; gap: 40px; }
+    .form-card { position: static; padding: 28px; }
+    .form-card h2 { font-size: 26px; }
+    .report-book { max-width: 320px; transform: rotate(0deg); }
+    .value-title { font-size: 26px; }
+  }
+
+  @media (max-width: 900px) {
     .hero-account { font-size: 44px; }
-    .score-number { font-size: 96px; }
-    .final-cta h2 { font-size: 36px; }
-    .mid-cta-inner { flex-direction: column; align-items: flex-start; }
   }
 </style>
 </head>
@@ -1314,16 +1469,12 @@
   <div class="header-inner">
     <a href="https://www.airops.com" class="logo"><img src="assets/airops-wordmark.svg" alt="AirOps"></a>
     <nav class="header-nav">
-      <a href="#score-breakdown">Score Breakdown</a>
-      <a href="#opportunities">Opportunities</a>
-      <a href="#playbooks">Winning Playbooks</a>
+      <a href="#what-you-get">What you get</a>
+      <a href="#proof">Customer wins</a>
+      <a href="#request-form">Request scorecard</a>
     </nav>
     <div class="header-actions">
-      <button type="button" class="btn-share" id="share-btn" aria-label="Copy link to share">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
-        <span class="btn-share-label">Share</span>
-      </button>
-      <a href="https://www.airops.com/book-a-call" target="_blank" class="btn btn-primary" style="padding: 12px 24px; font-size: 14px;">Book a Demo &rarr;</a>
+      <a href="#request-form" class="btn btn-primary" style="padding: 12px 24px; font-size: 14px;">Request scorecard &rarr;</a>
     </div>
   </div>
 </header>
@@ -1335,290 +1486,145 @@
   <div class="hero-blob hero-blob-3"></div>
   <div class="hero-blob hero-blob-4"></div>
   <div class="hero-content">
-    <img class="hero-logo" src="assets/hex.png" alt="Hex.tech logo" onerror="this.style.display='none'">
-    <h1 class="hero-account">Hex is 25 points behind Databricks, Mode, and Deepnote in AI search. Here's the 90&#8209;day plan to close the gap.</h1>
+    <span class="pill pill-dark" style="margin-bottom: 24px;">360 AEO Strategy Scorecard</span>
+    <h1 class="hero-account">See how your brand ranks in AI search &mdash; and get the 90&#8209;day plan to win citations in ChatGPT, Perplexity, and Google AI Overviews.</h1>
   </div>
 </section>
 
-<!-- SCORE -->
-<section class="score-section">
-  <div class="score-card">
-    <div class="score-head">
-      <div class="score-label">Your AEO Readiness Score</div>
-      <div class="score-sublabel">Hex.tech</div>
-    </div>
-    <div class="score-compare">
-      <span class="score-number">64</span>
-      <div class="score-versus">
-        <span class="score-versus-label">vs. Top 5 Avg<sup>*</sup></span>
-        <span class="score-competitor">89</span>
-      </div>
-    </div>
-    <div class="score-divider"></div>
-    <div class="score-footer">
-      <span class="score-footnote"><sup>*</sup> Benchmarked against top 5 competitors</span>
-      <div class="competitor-logos">
-        <img src="assets/databricks.jpeg" alt="Databricks" loading="lazy" onerror="this.style.display='none'">
-        <img src="assets/mode.png" alt="Mode" loading="lazy" onerror="this.style.display='none'">
-        <img src="assets/deepnote.jpeg" alt="Deepnote" loading="lazy" onerror="this.style.display='none'">
-        <img src="assets/streamlit.png" alt="Streamlit" loading="lazy" onerror="this.style.display='none'">
-        <img src="assets/jupyter.svg" alt="Jupyter" loading="lazy" onerror="this.style.display='none'">
-      </div>
-    </div>
-  </div>
+<!-- LEAD FORM -->
+<section class="form-section" id="request-form">
+  <div class="form-section-inner">
 
-  <div class="read-card">
-    <div class="chart-header">
-      <h3 class="chart-title">Citation Rate</h3>
-      <span class="chart-pill">Published Content</span>
-    </div>
-    <p class="chart-subtitle">How often Hex pages are cited in AI responses</p>
+    <!-- LEFT: Report visual + value points -->
+    <div class="form-visual-col">
+      <div class="report-book" aria-label="360 AEO Scorecard report cover">
+        <svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+          <rect x="14" y="22" width="372" height="470" rx="6" fill="#0A2210"/>
+          <rect x="6" y="10" width="380" height="478" rx="6" fill="#0F2E1B"/>
+          <rect x="6" y="10" width="14" height="478" rx="6" fill="#0A1A10"/>
+          <line x1="20" y1="10" x2="20" y2="488" stroke="#1a4a2b" stroke-width="1"/>
 
-    <svg class="chart-svg" viewBox="0 0 540 240" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Hex citation rate declining from 15.5% in Q2 to 5.5% projected by Q4">
-      <!-- gridlines -->
-      <line class="grid" x1="40" y1="60" x2="524" y2="60"/>
-      <line class="grid" x1="40" y1="114" x2="524" y2="114"/>
-      <line class="grid" x1="40" y1="168" x2="524" y2="168"/>
-      <line class="grid" x1="40" y1="204" x2="524" y2="204"/>
+          <text x="46" y="56" fill="#C5EDD5" font-family="DM Mono, Courier New, monospace" font-size="10" letter-spacing="2">AIROPS  ·  REPORT</text>
 
-      <!-- y-axis labels -->
-      <text class="axis-text" x="32" y="64" text-anchor="end">20%</text>
-      <text class="axis-text" x="32" y="118" text-anchor="end">15%</text>
-      <text class="axis-text" x="32" y="172" text-anchor="end">10%</text>
-      <text class="axis-text" x="32" y="208" text-anchor="end">5%</text>
+          <text x="46" y="120" fill="#F4F0E5" font-family="Georgia, serif" font-size="40" letter-spacing="-1">360&#176;</text>
+          <text x="46" y="158" fill="#F4F0E5" font-family="Georgia, serif" font-size="28" letter-spacing="-0.5">AEO Strategy</text>
+          <text x="46" y="190" fill="#F4F0E5" font-family="Georgia, serif" font-size="28" letter-spacing="-0.5">Scorecard</text>
 
-      <!-- area fill under the line -->
-      <path class="area" d="M40,77 L77,93 L115,90 L152,101 L189,86 L227,107 L264,119 L301,123 L339,128 L376,137 L413,144 L451,150 L487,160 L524,167 L524,210 L40,210 Z"/>
-      <!-- line -->
-      <path class="line" d="M40,77 L77,93 L115,90 L152,101 L189,86 L227,107 L264,119 L301,123 L339,128 L376,137 L413,144 L451,150 L487,160 L524,167"/>
+          <line x1="46" y1="220" x2="354" y2="220" stroke="#1a4a2b" stroke-width="1"/>
 
-      <!-- dots at start and end -->
-      <circle class="dot" cx="40" cy="77" r="3"/>
-      <circle class="dot" cx="524" cy="167" r="3"/>
+          <g transform="translate(200, 320)">
+            <polygon points="0,-78 67,-39 67,39 0,78 -67,39 -67,-39" fill="none" stroke="#1f4d31" stroke-width="1"/>
+            <polygon points="0,-58 50,-29 50,29 0,58 -50,29 -50,-29" fill="none" stroke="#1f4d31" stroke-width="1"/>
+            <polygon points="0,-38 33,-19 33,19 0,38 -33,19 -33,-19" fill="none" stroke="#1f4d31" stroke-width="1"/>
+            <line x1="0" y1="-78" x2="0" y2="78" stroke="#1f4d31" stroke-width="0.5"/>
+            <line x1="-67" y1="-39" x2="67" y2="39" stroke="#1f4d31" stroke-width="0.5"/>
+            <line x1="-67" y1="39" x2="67" y2="-39" stroke="#1f4d31" stroke-width="0.5"/>
+            <polygon points="0,-68 55,-31 60,35 0,62 -58,33 -55,-32" fill="rgba(240,215,240,0.18)" stroke="#F0D7F0" stroke-width="1" stroke-dasharray="3 3"/>
+            <polygon points="0,-44 40,-22 58,33 0,48 -45,27 -40,-23" fill="rgba(95,255,138,0.28)" stroke="#5FFF8A" stroke-width="1.5"/>
+            <circle cx="0" cy="-44" r="3" fill="#5FFF8A"/>
+            <circle cx="40" cy="-22" r="3" fill="#5FFF8A"/>
+            <circle cx="58" cy="33" r="3" fill="#5FFF8A"/>
+            <circle cx="0" cy="48" r="3" fill="#5FFF8A"/>
+            <circle cx="-45" cy="27" r="3" fill="#5FFF8A"/>
+            <circle cx="-40" cy="-23" r="3" fill="#5FFF8A"/>
+          </g>
 
-      <!-- x-axis labels -->
-      <text class="axis-text" x="40" y="228" text-anchor="start">Q2</text>
-      <text class="axis-text" x="282" y="228" text-anchor="middle">Q3</text>
-      <text class="axis-text" x="524" y="228" text-anchor="end">Q4</text>
-    </svg>
+          <text x="46" y="450" fill="#9DA298" font-family="DM Mono, Courier New, monospace" font-size="9" letter-spacing="1.5">PREPARED FOR</text>
+          <text x="46" y="470" fill="#F4F0E5" font-family="Georgia, serif" font-size="16">[ Your brand ]</text>
 
-    <p class="chart-warning">At current trend, Hex will fall to <strong>8% cite share</strong> by Q4.</p>
-
-    <a href="https://calendly.com/zoe-jessup-airops/airops-connect" target="_blank" class="btn btn-accent">Get the 90 day plan &rarr;</a>
-  </div>
-</section>
-
-<!-- COMBINED METRICS + RADAR -->
-<section class="breakdown" id="score-breakdown">
-  <div class="section-header">
-    <h2 class="section-title">Scoring breakdown</h2>
-    <span class="section-meta">7 metrics · Click to highlight on the radar · vs. target 70</span>
-  </div>
-
-  <div class="combined-card">
-    <div class="metrics-grid">
-      <div class="metric-cell" data-metric="freshness" tabindex="0" role="button">
-        <div class="metric-label">Freshness</div>
-        <div><span class="metric-score">62</span><span class="metric-denom">/100</span></div>
-        <div class="metric-bar"><div class="metric-bar-fill" style="width: 62%"></div></div>
-      </div>
-      <div class="metric-cell" data-metric="crawlability" tabindex="0" role="button">
-        <div class="metric-label">Crawlability</div>
-        <div><span class="metric-score">78</span><span class="metric-denom">/100</span></div>
-        <div class="metric-bar"><div class="metric-bar-fill" style="width: 78%"></div></div>
-      </div>
-      <div class="metric-cell" data-metric="entity" tabindex="0" role="button">
-        <div class="metric-label">Entity Signals</div>
-        <div><span class="metric-score">42</span><span class="metric-denom">/100</span></div>
-        <div class="metric-bar"><div class="metric-bar-fill" style="width: 42%; background: var(--risk-red);"></div></div>
-      </div>
-      <div class="metric-cell" data-metric="schema" tabindex="0" role="button">
-        <div class="metric-label">Schema Coverage</div>
-        <div><span class="metric-score">90</span><span class="metric-denom">/100</span></div>
-        <div class="metric-bar"><div class="metric-bar-fill" style="width: 90%"></div></div>
-      </div>
-      <div class="metric-cell" data-metric="citation" tabindex="0" role="button">
-        <div class="metric-label">Citation Worthiness</div>
-        <div><span class="metric-score">62</span><span class="metric-denom">/100</span></div>
-        <div class="metric-bar"><div class="metric-bar-fill" style="width: 62%"></div></div>
-      </div>
-      <div class="metric-cell" data-metric="answer" tabindex="0" role="button">
-        <div class="metric-label">Answerable Format</div>
-        <div><span class="metric-score">66</span><span class="metric-denom">/100</span></div>
-        <div class="metric-bar"><div class="metric-bar-fill" style="width: 66%"></div></div>
-      </div>
-      <div class="metric-cell" data-metric="offsite" tabindex="0" role="button">
-        <div class="metric-label">Offsite Readiness</div>
-        <div><span class="metric-score">48</span><span class="metric-denom">/100</span></div>
-        <div class="metric-bar"><div class="metric-bar-fill" style="width: 48%"></div></div>
-      </div>
-    </div>
-
-    <div class="radar-card">
-      <div class="radar-stats">
-        <div class="radar-stat">
-          <div class="radar-stat-label" id="stat-1-label">Selected</div>
-          <div class="radar-stat-value" id="stat-1-value">— None</div>
-          <div class="radar-stat-description" id="stat-1-description">Click any metric above to see what it measures.</div>
-        </div>
-        <div class="radar-stat">
-          <div class="radar-stat-label" id="stat-2-label">Average</div>
-          <div class="radar-stat-value" id="stat-2-value">64</div>
-        </div>
-        <div class="radar-stat">
-          <div class="radar-stat-label" id="stat-3-label">Top 5 Competitor Avg Score</div>
-          <div class="radar-stat-value" id="stat-3-value">89</div>
-        </div>
-      </div>
-      <div class="radar-chart-wrap">
-        <svg class="radar-svg" viewBox="0 0 440 440" width="100%" style="max-width: 440px;">
-          <!-- Grid -->
-          <polygon class="grid-line" points="220,80 341.24,150 341.24,290 220,360 98.76,290 98.76,150"/>
-          <polygon class="grid-line" points="220,108 317,164 317,276 220,332 123,276 123,164"/>
-          <polygon class="grid-line" points="220,136 292.74,178 292.74,262 220,304 147.26,262 147.26,178"/>
-          <polygon class="grid-line" points="220,164 268.49,192 268.49,248 220,276 171.51,248 171.51,192"/>
-          <polygon class="grid-line" points="220,192 244.25,206 244.25,234 220,248 195.75,234 195.75,206"/>
-
-          <!-- Axis lines -->
-          <line class="axis-line" data-metric="freshness" x1="220" y1="220" x2="220" y2="80"/>
-          <line class="axis-line" data-metric="crawlability" x1="220" y1="220" x2="356.74" y2="156.48"/>
-          <line class="axis-line" data-metric="entity" x1="220" y1="220" x2="356.34" y2="290.79"/>
-          <line class="axis-line" data-metric="schema" x1="220" y1="220" x2="280.36" y2="346.49"/>
-          <line class="axis-line" data-metric="answer" x1="220" y1="220" x2="159.64" y2="346.49"/>
-          <line class="axis-line" data-metric="offsite" x1="220" y1="220" x2="83.66" y2="290.79"/>
-          <line class="axis-line" data-metric="citation" x1="220" y1="220" x2="83.26" y2="156.48"/>
-
-          <!-- Target shape (70) -->
-          <polygon class="target-shape" points="220,122 315.69,175.54 315.41,225.56 262.25,309.54 177.75,309.54 124.59,225.56 124.31,175.54"/>
-
-          <!-- Data shape -->
-          <polygon class="data-shape" points="220,133.2 305.4,151.9 277.3,233.1 274.7,333.5 179.9,303.2 154.5,235 152.2,165.9"/>
-
-          <!-- Data points -->
-          <circle class="data-point" data-metric="freshness" cx="220" cy="133.2" r="4"/>
-          <circle class="data-point" data-metric="crawlability" cx="305.4" cy="151.9" r="4"/>
-          <circle class="data-point" data-metric="entity" cx="277.3" cy="233.1" r="4"/>
-          <circle class="data-point" data-metric="schema" cx="274.7" cy="333.5" r="4"/>
-          <circle class="data-point" data-metric="answer" cx="179.9" cy="303.2" r="4"/>
-          <circle class="data-point" data-metric="offsite" cx="154.5" cy="235" r="4"/>
-          <circle class="data-point" data-metric="citation" cx="152.2" cy="165.9" r="4"/>
-
-          <!-- Axis labels -->
-          <text class="axis-label" data-metric="freshness" x="220" y="68" text-anchor="middle">Freshness</text>
-          <text class="axis-label" data-metric="crawlability" x="375" y="150" text-anchor="middle">Crawlability</text>
-          <text class="axis-label" data-metric="entity" x="378" y="298" text-anchor="middle">Entity</text>
-          <text class="axis-label" data-metric="schema" x="290" y="365" text-anchor="middle">Schema</text>
-          <text class="axis-label" data-metric="answer" x="150" y="365" text-anchor="middle">Answer Format</text>
-          <text class="axis-label" data-metric="offsite" x="58" y="298" text-anchor="middle">Offsite</text>
-          <text class="axis-label" data-metric="citation" x="60" y="150" text-anchor="middle">Citation</text>
+          <rect x="300" y="448" width="54" height="22" rx="3" fill="#5FFF8A"/>
+          <text x="327" y="463" fill="#0A1A10" font-family="DM Mono, Courier New, monospace" font-size="10" font-weight="600" letter-spacing="1" text-anchor="middle">2026</text>
         </svg>
       </div>
+
+      <div class="value-points" id="what-you-get">
+        <span class="mono value-eyebrow">What you&rsquo;ll get</span>
+        <h2 class="value-title">Three things inside your scorecard</h2>
+        <ul class="value-list">
+          <li>
+            <span class="value-num">1</span>
+            <div>
+              <strong>Your AEO readiness score</strong>
+              <p>A 7-pillar diagnostic &mdash; freshness, schema, entity signals, citation worthiness, offsite presence &mdash; benchmarked against your top 5 competitors.</p>
+            </div>
+          </li>
+          <li>
+            <span class="value-num">2</span>
+            <div>
+              <strong>A prioritized 90-day playbook</strong>
+              <p>The exact moves to win citations in ChatGPT, Perplexity, and Google AI Overviews, ordered by impact for your category.</p>
+            </div>
+          </li>
+          <li>
+            <span class="value-num">3</span>
+            <div>
+              <strong>Competitive intelligence</strong>
+              <p>Where competitors are winning AI mentions, the listicles you&rsquo;re missing from, and the offsite signals you can pursue first.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
     </div>
 
-  </div>
-</section>
+    <!-- RIGHT: Form card -->
+    <div class="form-card">
+      <h2>Request your scorecard</h2>
+      <p>Tell us about your business. We&rsquo;ll deliver your custom 360 AEO Scorecard within 5 business days.</p>
 
-<!-- STRATEGIC OPPORTUNITIES -->
-<section class="risks-section" id="opportunities">
-  <div class="section-header">
-    <h2 class="section-title">Strategic opportunities for Hex.tech</h2>
-    <span class="section-meta">Where you can win more AI visibility</span>
-  </div>
+      <form class="lead-form" id="lead-form" novalidate>
+        <div class="form-row-2">
+          <div class="form-field">
+            <label for="firstName">First name<sup>*</sup></label>
+            <input type="text" id="firstName" name="firstName" autocomplete="given-name" required>
+          </div>
+          <div class="form-field">
+            <label for="lastName">Last name<sup>*</sup></label>
+            <input type="text" id="lastName" name="lastName" autocomplete="family-name" required>
+          </div>
+        </div>
+        <div class="form-field">
+          <label for="email">Business email<sup>*</sup></label>
+          <input type="email" id="email" name="email" autocomplete="email" placeholder="you@company.com" required>
+        </div>
+        <div class="form-field">
+          <label for="spend">Estimated monthly spend on Content / SEO<sup>*</sup></label>
+          <select id="spend" name="spend" required>
+            <option value="">Select a range</option>
+            <option>Less than $5K / month</option>
+            <option>$5K &ndash; $20K / month</option>
+            <option>$20K &ndash; $50K / month</option>
+            <option>$50K &ndash; $100K / month</option>
+            <option>$100K+ / month</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label for="employees">Number of employees<sup>*</sup></label>
+          <select id="employees" name="employees" required>
+            <option value="">Organization size</option>
+            <option>1 &ndash; 10</option>
+            <option>11 &ndash; 50</option>
+            <option>51 &ndash; 200</option>
+            <option>201 &ndash; 500</option>
+            <option>501 &ndash; 1,000</option>
+            <option>1,001 &ndash; 5,000</option>
+            <option>5,000+</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary form-submit">Request my scorecard &rarr;</button>
+        <p class="form-fine-print">We&rsquo;ll only use this to deliver your scorecard. No spam.</p>
+      </form>
 
-  <div class="risks-grid">
-    <div class="risk-card">
-      <span class="risk-number">[1]</span>
-      <span class="risk-tag">Critical</span>
-      <h3 class="risk-title">Recapture the "hex vs deepnote" SERP and fix broken comparison pages.</h3>
-      <div class="risk-detail">Deepnote ranks <strong>#1 for "hex vs deepnote"</strong> and <strong>#4 for "hex competitors."</strong> Hex's matching comparison pages return 404. (Source: DataForSEO + SERP audit)</div>
+      <div class="form-success" id="form-success" hidden>
+        <h3 class="serif">Thanks &mdash; your scorecard is on its way.</h3>
+        <p>Our team will deliver your custom 360 AEO Scorecard within 5 business days. Keep an eye on your inbox.</p>
+      </div>
     </div>
 
-    <div class="risk-card">
-      <span class="risk-number">[2]</span>
-      <span class="risk-tag high">High</span>
-      <h3 class="risk-title">Convert AI citations into named brand mentions on blog and template pages.</h3>
-      <div class="risk-detail">Of <strong>231 tracked AI citations</strong>, /blog/ accounts for 94 and /templates/ for 47. AI engines link to the pages but rarely name Hex in the answer.</div>
-    </div>
-
-    <div class="risk-card">
-      <span class="risk-number">[3]</span>
-      <span class="risk-tag high">High</span>
-      <h3 class="risk-title">Win inclusion in AI Overviews for high-intent data tooling queries.</h3>
-      <div class="risk-detail">Hex ranks top 10 on Google for <strong>"data visualization tool"</strong> (2,900 monthly searches). AI Overviews currently surface Tableau, Power BI, Flourish, and Datawrapper—Hex is absent.</div>
-    </div>
-  </div>
-</section>
-
-<!-- MID CTA -->
-<section class="mid-cta">
-  <div class="mid-cta-inner">
-    <div class="mid-cta-text">Your scorecard, your 3 actions, your 90 day plan. 30 minutes, no pitch.</div>
-    <a href="https://calendly.com/zoe-jessup-airops/airops-connect" target="_blank" class="btn btn-accent">Get the 90 day plan &rarr;</a>
-  </div>
-</section>
-
-<!-- COMPETITORS -->
-<section class="competitors-section">
-  <div class="section-header">
-    <h2 class="section-title">Top 5 competitors in the market</h2>
-    <span class="section-meta">Who AI search recommends instead of you</span>
-  </div>
-
-  <div class="comp-table">
-    <div class="comp-row comp-header">
-      <span class="comp-rank">#</span>
-      <span class="comp-logo-spacer"></span>
-      <span class="comp-name">Competitor</span>
-      <span class="comp-why">Why they're winning</span>
-      <span class="comp-share">Cite share</span>
-    </div>
-    <div class="comp-row">
-      <span class="comp-rank">01</span>
-      <img class="comp-logo" src="assets/databricks.jpeg" alt="Databricks logo" loading="lazy" onerror="this.style.visibility='hidden'">
-      <span class="comp-name">databricks.com</span>
-      <span class="comp-why">Unified data and AI platform. Cross-shopped against Hex by buyers covering exploratory analytics use cases at enterprise scale.</span>
-      <span class="comp-share">24%</span>
-    </div>
-    <div class="comp-row">
-      <span class="comp-rank">02</span>
-      <img class="comp-logo" src="assets/mode.png" alt="Mode logo" loading="lazy" onerror="this.style.visibility='hidden'">
-      <span class="comp-name">mode.com</span>
-      <span class="comp-why">SQL-and-Python analytics notebook with reporting. Owns the analyst workflow of querying warehouses and publishing reports.</span>
-      <span class="comp-share">19%</span>
-    </div>
-    <div class="comp-row">
-      <span class="comp-rank">03</span>
-      <img class="comp-logo" src="assets/deepnote.jpeg" alt="Deepnote logo" loading="lazy" onerror="this.style.visibility='hidden'">
-      <span class="comp-name">deepnote.com</span>
-      <span class="comp-why">Cross-shopped against Hex with a real-time collaboration angle. Ranks #1 for "hex vs deepnote."</span>
-      <span class="comp-share">16%</span>
-    </div>
-    <div class="comp-row">
-      <span class="comp-rank">04</span>
-      <img class="comp-logo" src="assets/streamlit.png" alt="Streamlit logo" loading="lazy" onerror="this.style.visibility='hidden'">
-      <span class="comp-name">streamlit.io</span>
-      <span class="comp-why">Python data app framework. Buyers position it as a code-first alternative for building and sharing internal data apps.</span>
-      <span class="comp-share">11%</span>
-    </div>
-    <div class="comp-row">
-      <span class="comp-rank">05</span>
-      <img class="comp-logo" src="assets/jupyter.svg" alt="Jupyter logo" loading="lazy" onerror="this.style.visibility='hidden'">
-      <span class="comp-name">jupyter.org</span>
-      <span class="comp-why">The canonical open-source notebook with deep Wikipedia and entity coverage. Default AI fallback for "notebook" queries.</span>
-      <span class="comp-share">9%</span>
-    </div>
-    <div class="comp-row comp-row-you">
-      <span class="comp-rank">YOU</span>
-      <img class="comp-logo" src="assets/hex.png" alt="Hex logo" loading="lazy" onerror="this.style.visibility='hidden'">
-      <span class="comp-name">hex.tech</span>
-      <span class="comp-why">Your current AI citation share</span>
-      <span class="comp-share">7%</span>
-    </div>
   </div>
 </section>
 
 <!-- PROOF / CASE STUDIES -->
-<section class="proof-section">
+<section class="proof-section" id="proof">
   <div class="section-header">
     <h2 class="section-title">Teams winning AI search with AirOps</h2>
     <span class="section-meta">Customer results · last 12 months</span>
@@ -1651,46 +1657,6 @@
   </div>
 </section>
 
-<!-- PLAYBOOKS -->
-<section class="playbooks-section" id="playbooks">
-  <div class="section-header">
-    <h2 class="section-title">3 AirOps winning playbooks we'd run for you</h2>
-  </div>
-
-  <div class="playbooks-grid">
-    <div class="playbook-card">
-      <span class="playbook-label">Refresh Playbook</span>
-      <h3 class="playbook-title">Win the data viz tool category in AI Overviews</h3>
-      <p class="playbook-body">Our refresh playbook scans 200+ pages for entity signals, schema coverage, and citation worthiness. We rewrite headers, inject answer-first paragraphs, layer in FAQ schema, and route Hex's brand mention into every cited section. Expected lift in cite share: 2.4x in 90 days.</p>
-      <span class="gate-pill">Talk to us to learn more</span>
-    </div>
-
-    <div class="playbook-card">
-      <span class="playbook-label">Creation Playbook</span>
-      <h3 class="playbook-title">Reclaim the Deepnote comparison SERP</h3>
-      <p class="playbook-body">Target the 14 unowned AEO category queries Hex is missing. We produce listicle-style pages built to win AI Overviews: structured comparison tables, original benchmark data, and Hex named in every answerable section. Distribution into Datanami, The New Stack, and InfoWorld included.</p>
-      <span class="gate-pill">Talk to us to learn more</span>
-    </div>
-
-    <div class="playbook-card">
-      <span class="playbook-label">Offsite Playbook</span>
-      <h3 class="playbook-title">Earn citations in the 231 AI answers you're missing from</h3>
-      <p class="playbook-body">Commission the Wikipedia entry. Place Hex in the 7 listicles currently winning AI Overview for "best data notebook platform." Outreach to Splunk, ContentSquare, Zerve.ai, Julius.ai, Syracuse iSchool, and Quadratic with founder-quoted commentary. Highest-ROI move in the audit.</p>
-      <span class="gate-pill">Talk to us to learn more</span>
-    </div>
-  </div>
-
-  <div class="playbooks-cta">
-    <a href="https://calendly.com/zoe-jessup-airops/airops-connect" target="_blank" class="btn btn-primary">Get the 90 day plan &rarr;</a>
-  </div>
-</section>
-
-<!-- FINAL CTA -->
-<section class="final-cta" id="cta">
-  <h2>We built your 90 day AI search plan. Walk through it with us.</h2>
-  <p>Our team breaks down your scorecard and maps the highest impact moves for the next 90 days.</p>
-  <a href="https://calendly.com/zoe-jessup-airops/airops-connect" target="_blank" class="btn btn-accent" style="font-size: 16px; padding: 18px 36px;">Get the 90 day plan &rarr;</a>
-</section>
 
 <!-- FOOTER -->
 <footer class="footer">
@@ -1704,126 +1670,20 @@
 
 <script>
   (function () {
-    const TARGET = 70;
-    const AVG = 64;
-    const METRICS = {
-      freshness:    { label: 'Freshness',           score: 62, competitorAvg: 90, description: 'How recently your content has been updated. Older content gets cited less by AI engines.' },
-      crawlability: { label: 'Crawlability',        score: 78, competitorAvg: 88, description: 'How easily AI bots can access, parse, and index your pages and structured data.' },
-      entity:       { label: 'Entity Signals',      score: 42, competitorAvg: 67, description: 'Whether AI systems recognize your brand as a distinct, authoritative entity in the topic.' },
-      schema:       { label: 'Schema Coverage',     score: 90, competitorAvg: 91, description: 'Use of structured data markup that helps AI systems understand your page content.' },
-      citation:     { label: 'Citation Worthiness', score: 62, competitorAvg: 69, description: 'How quotable your content is — original data, clear claims, and answer-first structure.' },
-      answer:       { label: 'Answerable Format',   score: 66, competitorAvg: 86, description: 'Whether content is structured as direct Q&A blocks that AI engines extract for answers.' },
-      offsite:      { label: 'Offsite Readiness',   score: 48, competitorAvg: 55, description: 'Third-party mentions and citations on Wikipedia, Reddit, and authoritative listicles.' },
-    };
+    const form = document.getElementById('lead-form');
+    const success = document.getElementById('form-success');
+    if (!form || !success) return;
 
-    const cells = document.querySelectorAll('.metric-cell[data-metric]');
-    const svgPoints = document.querySelectorAll('.radar-svg .data-point[data-metric]');
-    const svgLabels = document.querySelectorAll('.radar-svg .axis-label[data-metric]');
-    const svgAxes = document.querySelectorAll('.radar-svg .axis-line[data-metric]');
-
-    const stat1Label = document.getElementById('stat-1-label');
-    const stat1Value = document.getElementById('stat-1-value');
-    const stat1Description = document.getElementById('stat-1-description');
-    const stat2Label = document.getElementById('stat-2-label');
-    const stat2Value = document.getElementById('stat-2-value');
-    const stat3Label = document.getElementById('stat-3-label');
-    const stat3Value = document.getElementById('stat-3-value');
-
-    function clearActive() {
-      cells.forEach(c => c.classList.remove('active'));
-      svgPoints.forEach(p => p.classList.remove('active'));
-      svgLabels.forEach(l => l.classList.remove('active'));
-      svgAxes.forEach(a => a.classList.remove('active'));
-    }
-
-    const COMPETITOR_AVG_OVERALL = 89;
-
-    function select(key) {
-      clearActive();
-      const m = METRICS[key];
-      if (!m) return;
-      document.querySelectorAll('[data-metric="' + key + '"]').forEach(el => el.classList.add('active'));
-      stat1Label.textContent = 'Selected';
-      stat1Value.textContent = m.label;
-      stat1Description.textContent = m.description;
-      stat2Label.textContent = 'Score';
-      stat2Value.textContent = m.score;
-      stat3Label.textContent = 'Top 5 Competitor Avg ' + m.label;
-      stat3Value.textContent = m.competitorAvg;
-      stat3Value.style.color = '';
-    }
-
-    function reset() {
-      clearActive();
-      stat1Label.textContent = 'Selected';
-      stat1Value.textContent = '— None';
-      stat1Value.style.color = '';
-      stat1Description.textContent = 'Click any metric above to see what it measures.';
-      stat2Label.textContent = 'Average';
-      stat2Value.textContent = AVG;
-      stat3Label.textContent = 'Top 5 Competitor Avg Score';
-      stat3Value.textContent = COMPETITOR_AVG_OVERALL;
-      stat3Value.style.color = '';
-    }
-
-    cells.forEach(cell => {
-      cell.addEventListener('click', () => {
-        const key = cell.getAttribute('data-metric');
-        if (cell.classList.contains('active')) {
-          reset();
-        } else {
-          select(key);
-        }
-      });
-      cell.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          cell.click();
-        }
-      });
-    });
-
-    svgPoints.forEach(p => {
-      p.style.cursor = 'pointer';
-      p.addEventListener('click', () => select(p.getAttribute('data-metric')));
-    });
-    svgLabels.forEach(l => {
-      l.style.cursor = 'pointer';
-      l.addEventListener('click', () => select(l.getAttribute('data-metric')));
-    });
-
-    reset();
-  })();
-
-  (function () {
-    const shareBtn = document.getElementById('share-btn');
-    if (!shareBtn) return;
-    const label = shareBtn.querySelector('.btn-share-label');
-    const originalLabel = label.textContent;
-
-    async function copyLink() {
-      const url = window.location.href;
-      try {
-        await navigator.clipboard.writeText(url);
-      } catch (err) {
-        const tmp = document.createElement('textarea');
-        tmp.value = url;
-        tmp.style.position = 'fixed';
-        tmp.style.opacity = '0';
-        document.body.appendChild(tmp);
-        tmp.select();
-        try { document.execCommand('copy'); } catch (_) {}
-        document.body.removeChild(tmp);
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
       }
-      shareBtn.classList.add('copied');
-      label.textContent = 'Link copied';
-      setTimeout(() => {
-        shareBtn.classList.remove('copied');
-        label.textContent = originalLabel;
-      }, 1800);
-    }
-
-    shareBtn.addEventListener('click', copyLink);
+      form.hidden = true;
+      success.hidden = false;
+      success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
   })();
 </script>
 
