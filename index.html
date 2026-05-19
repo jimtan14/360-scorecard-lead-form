@@ -92,6 +92,11 @@
     color: #00ff64;
     border-color: transparent;
   }
+  .pill-outline {
+    background: transparent;
+    border-color: #057a28;
+    color: #002910;
+  }
 
   /* AirOps primary button: bright green pill, no glow */
   .btn {
@@ -236,7 +241,7 @@
 
   /* HERO */
   .hero {
-    padding: 96px 48px 96px;
+    padding: 96px 48px 144px;
     background: var(--cream);
     text-align: center;
     position: relative;
@@ -1034,11 +1039,22 @@
     margin: 0 auto;
     padding: 0 48px 120px;
   }
+  .proof-section .section-header {
+    align-items: center;
+    text-align: center;
+  }
+  .proof-section .section-title { max-width: 880px; }
   .proof-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(6, minmax(0, 1fr));
     gap: 20px;
   }
+  /* Downward pyramid: 3 cards top row, 2 cards centered below */
+  .proof-card:nth-child(1) { grid-column: 1 / span 2; }
+  .proof-card:nth-child(2) { grid-column: 3 / span 2; }
+  .proof-card:nth-child(3) { grid-column: 5 / span 2; }
+  .proof-card:nth-child(4) { grid-column: 2 / span 2; }
+  .proof-card:nth-child(5) { grid-column: 4 / span 2; }
   .proof-card {
     border-radius: 0;
     padding: 40px 44px 36px;
@@ -1319,34 +1335,75 @@
   .form-section {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 120px 48px 120px;
+    padding: 56px 48px 80px;
   }
   .form-section-inner {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 64px;
+    gap: 56px;
     align-items: start;
   }
 
   /* Left column: report visual + value points */
-  .form-visual-col { display: flex; flex-direction: column; gap: 48px; }
+  .form-visual-col { display: flex; flex-direction: column; gap: 32px; }
 
   .report-book {
     position: relative;
     width: 100%;
-    max-width: 420px;
-    margin: 0 auto;
+    max-width: 400px;
+    margin: -120px 0 0;
     aspect-ratio: 4 / 5;
-    filter: drop-shadow(0 24px 48px rgba(10, 26, 16, 0.18)) drop-shadow(0 4px 12px rgba(10, 26, 16, 0.08));
-    transform: rotate(-2deg);
-    transition: transform 0.4s ease;
+    perspective: 1600px;
+    transform-style: preserve-3d;
+    transform-origin: 80% center;
+    transform: none;
+    transition: transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+    z-index: 5;
+    filter:
+      drop-shadow(0 20px 40px rgba(0, 41, 16, 0.22))
+      drop-shadow(0 8px 16px rgba(0, 41, 16, 0.12));
   }
-  .report-book:hover { transform: rotate(0deg) translateY(-4px); }
+  .report-book:hover {
+    transform: perspective(1600px) rotateY(-30deg) rotateX(4deg) rotateZ(-6deg) translateY(-12px);
+    filter:
+      drop-shadow(0 34px 56px rgba(0, 41, 16, 0.36))
+      drop-shadow(0 12px 22px rgba(0, 41, 16, 0.20))
+      drop-shadow(-18px 0 22px rgba(0, 41, 16, 0.18));
+  }
   .report-book svg { width: 100%; height: 100%; display: block; }
+
+  /* Holographic shimmer clipped to the cover area (viewBox 6,10 -> 386,488 of 400x500) */
+  .report-book::before {
+    content: "";
+    position: absolute;
+    top: 2%;
+    left: 1.5%;
+    width: 95%;
+    height: 95.6%;
+    pointer-events: none;
+    overflow: hidden;
+    background: linear-gradient(
+      115deg,
+      transparent 28%,
+      rgba(255, 200, 240, 0.08) 42%,
+      rgba(180, 230, 255, 0.14) 47%,
+      rgba(255, 240, 200, 0.16) 52%,
+      rgba(210, 200, 255, 0.14) 57%,
+      rgba(200, 255, 230, 0.08) 62%,
+      transparent 76%
+    );
+    background-size: 240% 100%;
+    background-position: -130% 0;
+    transition: background-position 1.4s cubic-bezier(0.2, 0.7, 0.2, 1);
+    z-index: 2;
+    mix-blend-mode: screen;
+  }
+  .report-book:hover::before { background-position: 240% 0; }
 
   .value-points { display: flex; flex-direction: column; gap: 24px; }
   .value-title {
     font-family: 'Serrif', Georgia, serif;
+    font-weight: 400;
     font-size: 40px;
     line-height: 1.1;
     letter-spacing: -0.02em;
@@ -1397,6 +1454,7 @@
   }
   .form-card h2 {
     font-family: 'Serrif', Georgia, serif;
+    font-weight: 400;
     font-size: 40px;
     line-height: 1.1;
     letter-spacing: -0.02em;
@@ -1404,6 +1462,7 @@
     margin-bottom: 16px;
   }
   .form-card > p {
+    font-family: 'Saans', 'Inter', 'Helvetica Neue', sans-serif;
     color: #01200d;
     font-size: 18px;
     line-height: 1.5;
@@ -1478,7 +1537,8 @@
     .form-section-inner { grid-template-columns: 1fr; gap: 40px; }
     .form-card { position: static; padding: 28px; }
     .form-card h2 { font-size: 26px; }
-    .report-book { max-width: 320px; transform: rotate(0deg); }
+    .report-book { max-width: 320px; transform: none; margin-top: 0; }
+    .report-book::before { display: none; }
     .value-title { font-size: 26px; }
   }
 
@@ -1506,7 +1566,7 @@
   <div class="hero-blob hero-blob-3"></div>
   <div class="hero-blob hero-blob-4"></div>
   <div class="hero-content">
-    <span class="pill pill-dark" style="margin-bottom: 24px;">360 AEO Strategy Scorecard</span>
+    <span class="pill pill-outline" style="margin-bottom: 24px;">360 AEO Strategy Scorecard</span>
     <h1 class="hero-account">Where does your brand rank in AI search? Get your free scorecard.</h1>
   </div>
 </section>
@@ -1559,7 +1619,6 @@
 
       <div class="value-points" id="what-you-get">
         <span class="mono value-eyebrow">What you&rsquo;ll get</span>
-        <h2 class="value-title">Three things inside your scorecard</h2>
         <ul class="value-list">
           <li>
             <span class="value-num">1</span>
@@ -1653,7 +1712,7 @@
 <!-- PROOF / CASE STUDIES -->
 <section class="proof-section" id="proof">
   <div class="section-header">
-    <h2 class="section-title">Teams winning AI search with AirOps</h2>
+    <h2 class="section-title">Join the teams winning AI Search with AirOps.</h2>
     <span class="section-meta">Customer results · last 12 months</span>
   </div>
   <div class="proof-grid">
@@ -1735,7 +1794,44 @@
       success.scrollIntoView({ behavior: 'smooth', block: 'center' });
     });
   })();
+
+  // Count-up animation for proof-card metrics on hover
+  (function () {
+    const cards = document.querySelectorAll('.proof-card');
+    if (!cards.length) return;
+    const easeOut = (t) => 1 - Math.pow(1 - t, 3);
+
+    cards.forEach(card => {
+      const metric = card.querySelector('.proof-metric');
+      if (!metric) return;
+      const original = metric.textContent.trim();
+      const match = original.match(/^([^\d-]*)(-?\d+(?:\.\d+)?)(.*)$/);
+      if (!match) return;
+      const prefix = match[1];
+      const target = parseFloat(match[2]);
+      const suffix = match[3];
+
+      let frame;
+      card.addEventListener('mouseenter', () => {
+        if (frame) cancelAnimationFrame(frame);
+        const start = performance.now();
+        const duration = 700;
+        function tick(now) {
+          const t = Math.min(1, (now - start) / duration);
+          const v = Math.round(target * easeOut(t));
+          metric.textContent = prefix + v + suffix;
+          if (t < 1) {
+            frame = requestAnimationFrame(tick);
+          } else {
+            metric.textContent = original;
+          }
+        }
+        frame = requestAnimationFrame(tick);
+      });
+    });
+  })();
 </script>
 
+<script src="agentation-bundle.js" defer></script>
 </body>
 </html>
