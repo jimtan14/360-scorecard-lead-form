@@ -1447,10 +1447,12 @@
     border: none;
     border-radius: 0;
     padding: 44px 40px;
+    margin-top: -120px;
     box-shadow: 0 14px 40px rgba(0, 122, 40, 0.22);
     position: sticky;
     top: 110px;
     color: var(--near-black);
+    z-index: 4;
   }
   .form-card h2 {
     font-family: 'Serrif', Georgia, serif;
@@ -1535,7 +1537,7 @@
   @media (max-width: 900px) {
     .form-section { padding: 24px 20px 60px; }
     .form-section-inner { grid-template-columns: 1fr; gap: 40px; }
-    .form-card { position: static; padding: 28px; }
+    .form-card { position: static; padding: 28px; margin-top: 0; }
     .form-card h2 { font-size: 26px; }
     .report-book { max-width: 320px; transform: none; margin-top: 0; }
     .report-book::before { display: none; }
