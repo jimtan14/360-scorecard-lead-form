@@ -6,15 +6,21 @@
 <title>Get your 360 AEO Strategy Scorecard | AirOps</title>
 <link rel="shortcut icon" href="assets/favicon.png" type="image/png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css" rel="stylesheet">
 <style>
+  /* AirOps brand fonts */
+  @font-face { font-family: 'Saans'; src: url('fonts/Saans-Regular.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'Saans'; src: url('fonts/Saans-Medium.woff2') format('woff2'); font-weight: 500; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'Saans'; src: url('fonts/Saans-SemiBold.woff2') format('woff2'); font-weight: 600; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'Saans'; src: url('fonts/Saans-Bold.woff2') format('woff2'); font-weight: 700; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'Saans Mono'; src: url('fonts/SaansMono-Medium.woff2') format('woff2'); font-weight: 500; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'Serrif'; src: url('fonts/SerrifVF.ttf') format('truetype'); font-weight: 100 900; font-style: normal; font-display: swap; }
+
   :root {
     --white: #ffffff;
-    --cream: #F4F0E5;
-    --cream-deep: #EBE6D8;
-    --off-white: #F4F0E5;
+    --cream: #FAF7EE;
+    --cream-deep: #F2EEDE;
+    --off-white: #FAF7EE;
     --near-black: #0A1A10;
     --green-50: #EDEDE2;
     --green-100: #DDE2D5;
@@ -30,15 +36,15 @@
     --text-primary: #0A1A10;
     --text-secondary: #5A6157;
     --text-tertiary: #9DA298;
-    --stroke-primary: #E0DBCD;
-    --stroke-green: #DDD8C8;
+    --stroke-primary: #057a28;
+    --stroke-green: #057a28;
     --risk-red: #B94524;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
   body {
-    font-family: 'Inter', 'Helvetica Neue', sans-serif;
+    font-family: 'Saans', 'Inter', 'Helvetica Neue', sans-serif;
     color: var(--text-primary);
     background: var(--cream);
     line-height: 1.5;
@@ -47,107 +53,108 @@
   }
 
   .serif {
-    font-family: Georgia, serif;
+    font-family: 'Serrif', Georgia, serif;
     font-weight: 400;
     letter-spacing: -0.02em;
   }
 
   .mono {
-    font-family: 'DM Mono', 'Courier New', monospace;
+    font-family: 'Saans Mono', 'DM Mono', 'Courier New', monospace;
     font-size: 11px;
     font-weight: 500;
     letter-spacing: 0.08em;
     text-transform: uppercase;
   }
 
-  .pill {
+  /* AirOps brand eyebrow pill (Green Light variant) */
+  .pill,
+  .ao-eyebrow,
+  .value-eyebrow {
     display: inline-flex;
     align-items: center;
-    padding: 6px 14px;
-    background: var(--white);
-    border: 1px solid var(--stroke-green);
-    border-radius: 999px;
-    font-family: 'DM Mono', 'Courier New', monospace;
-    font-size: 11px;
+    justify-content: center;
+    width: fit-content;
+    font-family: 'Saans Mono', 'DM Mono', monospace;
+    font-size: 14px;
     font-weight: 500;
-    letter-spacing: 0.1em;
+    line-height: 1.3;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
-    color: var(--near-black);
+    padding: 8px 16px;
+    background: #eef9f3;
+    border: 1px solid #057a28;
+    border-radius: 5px;
+    color: #057a28;
+    margin: 0;
   }
-
-  .pill::before {
-    content: "";
-    display: inline-block;
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--green-500);
-    margin-right: 8px;
-  }
-
   .pill-dark {
-    background: var(--green-600);
-    color: var(--white);
-    border-color: var(--green-600);
+    background: #000d05;
+    color: #00ff64;
+    border-color: transparent;
   }
 
+  /* AirOps primary button: bright green pill, no glow */
   .btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
-    padding: 14px 28px;
+    padding: 16px 24px;
     border: none;
-    border-radius: 999px;
-    font-family: 'Inter', 'Helvetica Neue', sans-serif;
-    font-weight: 600;
-    font-size: 15px;
+    border-radius: 58px;
+    font-family: 'Saans', 'Inter', 'Helvetica Neue', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1;
     cursor: pointer;
-    transition: all 0.15s ease;
+    transition: background 0.15s ease;
     text-decoration: none;
-    background: var(--interaction);
-    color: var(--near-black);
-    box-shadow: 0 0 0 6px rgba(0, 255, 100, 0.18);
+    background: #00ff64;
+    color: #002910;
+    box-shadow: none;
   }
-
-  .btn:hover {
-    background: #4dff8a;
-    box-shadow: 0 0 0 8px rgba(0, 255, 100, 0.25);
-  }
-
+  .btn:hover { background: #00cc50; }
   .btn-primary,
-  .btn-accent,
-  .btn-secondary {
-    background: var(--interaction);
-    color: var(--near-black);
+  .btn-accent {
+    background: #00ff64;
+    color: #002910;
     border: none;
-    box-shadow: 0 0 0 6px rgba(0, 255, 100, 0.18);
+    box-shadow: none;
   }
-
   .btn-primary:hover,
-  .btn-accent:hover,
-  .btn-secondary:hover {
-    background: #4dff8a;
-    box-shadow: 0 0 0 8px rgba(0, 255, 100, 0.25);
+  .btn-accent:hover { background: #00cc50; }
+  /* Secondary: sharp corners, pale green */
+  .btn-secondary {
+    background: #eef9f3;
+    color: #002910;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
   }
+  .btn-secondary:hover { background: #ccffe0; }
 
-  /* HEADER */
+  /* HEADER - floating island nav */
   .header {
-    background: var(--white);
-    padding: 16px 0;
+    background: transparent;
+    padding: 16px 24px 0;
     position: sticky;
-    top: 0;
+    top: 16px;
     z-index: 100;
   }
-
   .header-inner {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 48px;
+    padding: 10px 18px 10px 24px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 32px;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: saturate(180%) blur(14px);
+    -webkit-backdrop-filter: saturate(180%) blur(14px);
+    border: none;
+    border-radius: 999px;
+    box-shadow: 0 6px 28px rgba(10, 26, 16, 0.06);
   }
 
   .logo {
@@ -171,7 +178,7 @@
   }
 
   .header-nav a {
-    font-family: 'Inter', 'Helvetica Neue', sans-serif;
+    font-family: 'Saans', 'Inter', 'Helvetica Neue', sans-serif;
     font-size: 15px;
     font-weight: 500;
     color: var(--near-black);
@@ -197,7 +204,7 @@
     background: transparent;
     color: var(--near-black);
     border: 1px solid var(--stroke-primary);
-    font-family: 'Inter', 'Helvetica Neue', sans-serif;
+    font-family: 'Saans', 'Inter', 'Helvetica Neue', sans-serif;
     font-weight: 500;
     font-size: 14px;
     cursor: pointer;
@@ -229,7 +236,7 @@
 
   /* HERO */
   .hero {
-    padding: 58px 48px 48px;
+    padding: 96px 48px 96px;
     background: var(--cream);
     text-align: center;
     position: relative;
@@ -248,44 +255,41 @@
     z-index: 1;
   }
 
-  /* Saturated neon green — top right */
+  /* Saturated neon green - top right */
   .hero-blob-1 {
     width: 640px;
     height: 580px;
     background: radial-gradient(circle, #22E670 0%, #2BE96F 40%, transparent 75%);
     top: -140px;
     right: -80px;
-    opacity: 0.9;
+    opacity: 0.35;
   }
-
-  /* Mint/cyan — middle */
+  /* Mint/cyan - middle */
   .hero-blob-2 {
     width: 620px;
     height: 560px;
     background: radial-gradient(circle, #8FECDC 0%, #A4F0E0 45%, transparent 78%);
     top: 22%;
     right: 14%;
-    opacity: 0.75;
+    opacity: 0.3;
   }
-
-  /* Pink/lavender — bottom left bleeding down */
+  /* Light green - bottom left */
   .hero-blob-3 {
     width: 820px;
     height: 720px;
-    background: radial-gradient(circle, #F2BFE6 0%, #F0C8EE 40%, transparent 80%);
+    background: radial-gradient(circle, #CCFFE0 0%, #DFF5E5 40%, transparent 80%);
     bottom: -360px;
     left: -140px;
-    opacity: 0.95;
+    opacity: 0.4;
   }
-
-  /* Light cyan — left mid */
+  /* Light cyan - left mid */
   .hero-blob-4 {
     width: 520px;
     height: 460px;
     background: radial-gradient(circle, #B8F0E8 0%, #C8F4EC 45%, transparent 78%);
     top: 18%;
     left: 6%;
-    opacity: 0.7;
+    opacity: 0.28;
   }
 
   .hero > *:not(.hero-blob) {
@@ -311,14 +315,23 @@
   }
 
   .hero-account {
-    font-family: Georgia, serif;
-    font-size: 48px;
+    font-family: 'Serrif', Georgia, serif;
+    font-size: 72px;
     font-weight: 400;
-    letter-spacing: -0.022em;
-    line-height: 1.12;
-    margin: 0 auto;
-    color: var(--near-black);
+    letter-spacing: -0.02em;
+    line-height: 1.0;
+    margin: 24px auto 0;
+    color: #002910;
     max-width: 960px;
+  }
+  .hero-h1-logo {
+    display: inline-block;
+    height: 0.78em;
+    width: auto;
+    vertical-align: baseline;
+    transform: translateY(0.06em);
+    filter: brightness(0);
+    margin-right: 0.08em;
   }
 
   .hero-account .accent {
@@ -368,7 +381,7 @@
   }
 
   .score-label {
-    font-family: 'DM Mono', monospace;
+    font-family: 'Saans Mono', 'DM Mono', monospace;
     font-size: 11px;
     font-weight: 500;
     letter-spacing: 0.1em;
@@ -382,7 +395,7 @@
   }
 
   .score-sublabel {
-    font-family: 'DM Mono', monospace;
+    font-family: 'Saans Mono', 'DM Mono', monospace;
     font-size: 13px;
     font-weight: 500;
     letter-spacing: 0.1em;
@@ -399,7 +412,7 @@
   }
 
   .score-number {
-    font-family: Georgia, serif;
+    font-family: 'Serrif', Georgia, serif;
     font-size: 200px;
     font-weight: 400;
     letter-spacing: -0.05em;
@@ -415,7 +428,7 @@
   }
 
   .score-versus-label {
-    font-family: 'DM Mono', monospace;
+    font-family: 'Saans Mono', 'DM Mono', monospace;
     font-size: 12px;
     font-weight: 500;
     letter-spacing: 0.12em;
@@ -428,7 +441,7 @@
   }
 
   .score-competitor {
-    font-family: Georgia, serif;
+    font-family: 'Serrif', Georgia, serif;
     font-size: 80px;
     font-weight: 400;
     letter-spacing: -0.03em;
@@ -469,7 +482,7 @@
   }
 
   .competitor-line strong {
-    font-family: Georgia, serif;
+    font-family: 'Serrif', Georgia, serif;
     font-size: 24px;
     font-weight: 400;
     color: var(--white);
@@ -506,7 +519,7 @@
   }
 
   .chart-title {
-    font-family: Georgia, serif;
+    font-family: 'Serrif', Georgia, serif;
     font-size: 26px;
     font-weight: 400;
     letter-spacing: -0.02em;
@@ -553,7 +566,7 @@
   }
 
   .chart-svg .grid { stroke: #E4E4E2; stroke-width: 1; stroke-dasharray: 3 4; fill: none; }
-  .chart-svg .axis-text { font-family: 'Inter', sans-serif; font-size: 11px; fill: var(--text-tertiary); font-weight: 500; }
+  .chart-svg .axis-text { font-family: 'Saans', 'Inter', sans-serif; font-size: 11px; fill: var(--text-tertiary); font-weight: 500; }
   .chart-svg .line { stroke: var(--green-600); stroke-width: 2.2; fill: none; stroke-linejoin: round; stroke-linecap: round; }
   .chart-svg .area { fill: var(--green-600); opacity: 0.08; }
   .chart-svg .dot { fill: var(--green-600); }
@@ -583,28 +596,28 @@
 
   .section-header {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    margin-bottom: 32px;
-    border-bottom: 1px solid var(--stroke-green);
-    padding-bottom: 20px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    margin-bottom: 48px;
+    border-bottom: none;
+    padding-bottom: 0;
   }
-
   .section-title {
-    font-family: Georgia, serif;
-    font-size: 36px;
+    font-family: 'Serrif', Georgia, serif;
+    font-size: 56px;
     font-weight: 400;
     letter-spacing: -0.02em;
-    line-height: 1.1;
+    line-height: 1.0;
+    color: #002910;
   }
-
   .section-meta {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
+    font-family: 'Saans Mono', 'DM Mono', monospace;
+    font-size: 16px;
     font-weight: 500;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
-    color: var(--text-secondary);
+    color: #5A6157;
   }
 
   /* COMBINED MODULE */
@@ -646,7 +659,7 @@
   .metric-cell.active .metric-score { color: var(--green-500); }
 
   .metric-label {
-    font-family: 'DM Mono', monospace;
+    font-family: 'Saans Mono', 'DM Mono', monospace;
     font-size: 10px;
     font-weight: 500;
     letter-spacing: 0.08em;
@@ -657,7 +670,7 @@
   }
 
   .metric-score {
-    font-family: Georgia, serif;
+    font-family: 'Serrif', Georgia, serif;
     font-size: 42px;
     font-weight: 400;
     letter-spacing: -0.02em;
@@ -693,7 +706,7 @@
   }
 
   .gated-metrics .metric-cell {
-    /* gating removed — all metrics shown */
+    /* gating removed: all metrics shown */
   }
 
   .gate-overlay {
@@ -708,7 +721,7 @@
   }
 
   .gate-text {
-    font-family: 'DM Mono', monospace;
+    font-family: 'Saans Mono', 'DM Mono', monospace;
     font-size: 12px;
     font-weight: 500;
     letter-spacing: 0.08em;
@@ -763,7 +776,7 @@
   .radar-stat:last-child { border-bottom: none; }
 
   .radar-stat-label {
-    font-family: 'DM Mono', monospace;
+    font-family: 'Saans Mono', 'DM Mono', monospace;
     font-size: 10px;
     font-weight: 500;
     letter-spacing: 0.08em;
@@ -773,7 +786,7 @@
   }
 
   .radar-stat-value {
-    font-family: Georgia, serif;
+    font-family: 'Serrif', Georgia, serif;
     font-size: 40px;
     font-weight: 400;
     letter-spacing: -0.02em;
@@ -819,7 +832,7 @@
   .risk-card:last-child { border-right: none; }
 
   .risk-number {
-    font-family: 'DM Mono', monospace;
+    font-family: 'Saans Mono', 'DM Mono', monospace;
     font-size: 16px;
     font-weight: 500;
     letter-spacing: 0.06em;
@@ -834,7 +847,7 @@
     padding: 6px 14px;
     background: var(--risk-red);
     color: var(--white);
-    font-family: 'DM Mono', monospace;
+    font-family: 'Saans Mono', 'DM Mono', monospace;
     font-size: 13px;
     font-weight: 500;
     letter-spacing: 0.08em;
@@ -847,7 +860,7 @@
   }
 
   .risk-title {
-    font-family: Georgia, serif;
+    font-family: 'Serrif', Georgia, serif;
     font-size: 22px;
     font-weight: 400;
     letter-spacing: -0.01em;
@@ -886,7 +899,7 @@
 
   .mid-cta-text {
     color: var(--white);
-    font-family: Georgia, serif;
+    font-family: 'Serrif', Georgia, serif;
     font-size: 28px;
     font-weight: 400;
     letter-spacing: -0.01em;
@@ -938,7 +951,7 @@
   .comp-header .comp-rank,
   .comp-header .comp-why,
   .comp-header .comp-share {
-    font-family: 'DM Mono', monospace;
+    font-family: 'Saans Mono', 'DM Mono', monospace;
     font-size: 13px;
     font-weight: 700;
     letter-spacing: 0.1em;
@@ -947,14 +960,14 @@
   }
 
   .comp-rank {
-    font-family: Georgia, serif;
+    font-family: 'Serrif', Georgia, serif;
     font-size: 24px;
     font-weight: 400;
     color: var(--text-tertiary);
   }
 
   .comp-name {
-    font-family: Georgia, serif;
+    font-family: 'Serrif', Georgia, serif;
     font-size: 22px;
     font-weight: 400;
     letter-spacing: -0.01em;
@@ -968,7 +981,7 @@
   }
 
   .comp-share {
-    font-family: Georgia, serif;
+    font-family: 'Serrif', Georgia, serif;
     font-size: 24px;
     font-weight: 400;
     color: var(--green-500);
@@ -983,7 +996,7 @@
   }
 
   .comp-row-you .comp-rank {
-    font-family: 'DM Mono', monospace;
+    font-family: 'Saans Mono', 'DM Mono', monospace;
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 0.12em;
@@ -1017,26 +1030,23 @@
 
   /* PROOF / CASE STUDIES */
   .proof-section {
-    max-width: 1400px;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 0 32px 64px;
+    padding: 0 48px 120px;
   }
-
   .proof-grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 16px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
   }
-
   .proof-card {
-    border-radius: 24px;
-    padding: 28px 24px 24px;
+    border-radius: 0;
+    padding: 40px 44px 36px;
     display: flex;
     flex-direction: column;
-    min-height: 300px;
+    min-height: 460px;
     color: var(--near-black);
   }
-
   .proof-card-mint   { background: #B6F1D4; }
   .proof-card-blue   { background: #D6EEEF; }
   .proof-card-yellow { background: #ECF36C; }
@@ -1044,55 +1054,63 @@
   .proof-card-green  { background: #7FF09E; }
 
   .proof-metric {
-    font-family: Georgia, serif;
-    font-size: 56px;
+    font-family: 'Serrif', Georgia, serif;
+    font-size: 96px;
     font-weight: 400;
-    letter-spacing: -0.03em;
-    line-height: 1;
+    letter-spacing: -0.04em;
+    line-height: 0.9;
     color: var(--near-black);
-    margin-bottom: 10px;
+    margin-bottom: 20px;
   }
-
   .proof-label {
-    font-size: 15px;
-    line-height: 1.35;
+    font-family: 'Saans', 'Inter', 'Helvetica Neue', sans-serif;
+    font-size: 28px;
+    font-weight: 500;
+    line-height: 1.2;
     color: var(--near-black);
     margin-bottom: auto;
+    letter-spacing: -0.01em;
   }
-
   .proof-footer {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 12px;
-    margin-top: 24px;
+    justify-content: flex-end;
+    gap: 24px;
+    margin-top: 32px;
   }
-
   .proof-brand {
-    font-family: 'Inter', 'Helvetica Neue', sans-serif;
-    font-weight: 800;
-    font-size: 34px;
-    line-height: 1;
-    letter-spacing: -0.04em;
-    color: var(--near-black);
+    display: inline-flex;
+    align-items: center;
+    height: 56px;
+    max-width: 240px;
   }
-
+  .proof-brand img {
+    max-height: 56px;
+    max-width: 240px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    object-position: left bottom;
+    display: block;
+    filter: brightness(0);
+  }
   .proof-link {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    padding: 8px 14px;
-    background: var(--white);
-    border-radius: 999px;
-    font-family: 'Inter', 'Helvetica Neue', sans-serif;
-    font-weight: 600;
-    font-size: 13px;
+    gap: 8px;
+    padding: 14px 22px;
+    background: #eef9f3;
+    border-radius: 0;
+    font-family: 'Saans', 'Inter', 'Helvetica Neue', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
     color: var(--near-black);
     text-decoration: none;
-    transition: opacity 0.15s ease;
+    white-space: nowrap;
+    transition: background 0.18s ease;
   }
-
-  .proof-link:hover { opacity: 0.7; }
+  .proof-link:hover { background: #ccffe0; }
 
   @media (max-width: 1100px) {
     .proof-grid { grid-template-columns: repeat(3, 1fr); }
@@ -1127,7 +1145,7 @@
   }
 
   .playbook-label {
-    font-family: 'DM Mono', monospace;
+    font-family: 'Saans Mono', 'DM Mono', monospace;
     font-size: 11px;
     font-weight: 500;
     letter-spacing: 0.08em;
@@ -1136,7 +1154,7 @@
   }
 
   .playbook-title {
-    font-family: Georgia, serif;
+    font-family: 'Serrif', Georgia, serif;
     font-size: 24px;
     font-weight: 400;
     letter-spacing: -0.01em;
@@ -1160,7 +1178,7 @@
     left: 32px;
     background: var(--accent-label);
     padding: 6px 10px;
-    font-family: 'DM Mono', monospace;
+    font-family: 'Saans Mono', 'DM Mono', monospace;
     font-size: 10px;
     font-weight: 500;
     letter-spacing: 0.08em;
@@ -1188,7 +1206,7 @@
   }
 
   .final-cta h2 {
-    font-family: Georgia, serif;
+    font-family: 'Serrif', Georgia, serif;
     font-size: 56px;
     font-weight: 400;
     letter-spacing: -0.02em;
@@ -1229,7 +1247,7 @@
   }
 
   .footer-nav a {
-    font-family: 'Inter', 'Helvetica Neue', sans-serif;
+    font-family: 'Saans', 'Inter', 'Helvetica Neue', sans-serif;
     font-size: 18px;
     font-weight: 500;
     color: #DDEEDD;
@@ -1268,7 +1286,7 @@
   }
 
   .footer-links a {
-    font-family: 'DM Mono', monospace;
+    font-family: 'Saans Mono', 'DM Mono', monospace;
     font-size: 12px;
     font-weight: 500;
     letter-spacing: 0.1em;
@@ -1294,19 +1312,19 @@
   .radar-svg .data-point { fill: var(--green-500); transition: r 0.2s ease, fill 0.2s ease; }
   .radar-svg .data-point.active { r: 8; fill: var(--interaction); stroke: var(--green-600); stroke-width: 2; }
   .radar-svg .axis-line.active { stroke: var(--green-500); stroke-width: 2; }
-  .radar-svg .axis-label { font-family: 'DM Mono', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; fill: var(--text-secondary); transition: fill 0.2s ease, font-weight 0.2s ease; }
+  .radar-svg .axis-label { font-family: 'Saans Mono', 'DM Mono', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; fill: var(--text-secondary); transition: fill 0.2s ease, font-weight 0.2s ease; }
   .radar-svg .axis-label.active { fill: var(--near-black); font-weight: 700; }
 
   /* ===== LEAD FORM SECTION ===== */
   .form-section {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 40px 32px 80px;
+    padding: 120px 48px 120px;
   }
   .form-section-inner {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 56px;
+    gap: 64px;
     align-items: start;
   }
 
@@ -1326,73 +1344,70 @@
   .report-book:hover { transform: rotate(0deg) translateY(-4px); }
   .report-book svg { width: 100%; height: 100%; display: block; }
 
-  .value-points { display: flex; flex-direction: column; gap: 20px; }
-  .value-eyebrow { color: var(--green-500); }
+  .value-points { display: flex; flex-direction: column; gap: 24px; }
   .value-title {
-    font-family: Georgia, serif;
-    font-size: 32px;
-    line-height: 1.15;
+    font-family: 'Serrif', Georgia, serif;
+    font-size: 40px;
+    line-height: 1.1;
     letter-spacing: -0.02em;
-    color: var(--near-black);
+    color: #002910;
   }
-  .value-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 18px; }
+  .value-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0; }
   .value-list li {
     display: grid;
-    grid-template-columns: 32px 1fr;
-    gap: 16px;
-    padding: 18px 0;
-    border-top: 1px solid var(--stroke-green);
+    grid-template-columns: 48px 1fr;
+    gap: 20px;
+    padding: 24px 0;
+    border-top: 1px solid #d4e8da;
   }
-  .value-list li:last-child { border-bottom: 1px solid var(--stroke-green); }
+  .value-list li:last-child { border-bottom: 1px solid #d4e8da; }
   .value-num {
-    width: 32px;
-    height: 32px;
-    border-radius: 999px;
-    background: var(--green-700);
-    color: var(--white);
-    font-family: 'DM Mono', 'Courier New', monospace;
-    font-size: 13px;
-    font-weight: 600;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+    font-family: 'Serrif', Georgia, serif;
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 1;
+    color: #057a28;
+    letter-spacing: -0.02em;
   }
   .value-list strong {
     display: block;
-    font-size: 17px;
-    font-weight: 600;
-    color: var(--near-black);
-    margin-bottom: 4px;
+    font-family: 'Saans', 'Inter', sans-serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: #001408;
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
   }
   .value-list p {
-    font-size: 14px;
-    color: var(--text-secondary);
-    line-height: 1.55;
+    font-size: 16px;
+    color: #01200d;
+    line-height: 1.5;
   }
 
-  /* Right column: form card (dark green treatment) */
+  /* Right column: form card (white with green-tinted shadow) */
   .form-card {
-    background: var(--green-700);
+    background: var(--white);
     border: none;
-    border-radius: 24px;
+    border-radius: 0;
     padding: 44px 40px;
-    box-shadow: 0 24px 60px -24px rgba(10, 26, 16, 0.35);
+    box-shadow: 0 14px 40px rgba(0, 122, 40, 0.22);
     position: sticky;
-    top: 32px;
-    color: var(--white);
+    top: 110px;
+    color: var(--near-black);
   }
   .form-card h2 {
-    font-family: Georgia, serif;
-    font-size: 32px;
-    line-height: 1.15;
+    font-family: 'Serrif', Georgia, serif;
+    font-size: 40px;
+    line-height: 1.1;
     letter-spacing: -0.02em;
-    color: var(--white);
-    margin-bottom: 12px;
+    color: #002910;
+    margin-bottom: 16px;
   }
   .form-card > p {
-    color: rgba(255, 255, 255, 0.72);
-    font-size: 14px;
-    margin-bottom: 28px;
+    color: #01200d;
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 32px;
   }
 
   /* Visually hidden labels (kept for screen readers) */
@@ -1412,12 +1427,12 @@
   .form-field select {
     width: 100%;
     padding: 18px 20px;
-    border: 1px solid transparent;
-    border-radius: 10px;
+    border: 1px solid #d4e8da;
+    border-radius: 0;
     background: var(--white);
     font-family: inherit;
     font-size: 16px;
-    color: var(--near-black);
+    color: #002910;
     transition: border-color 0.15s ease, box-shadow 0.15s ease;
   }
   .form-field input::placeholder { color: #6B7269; }
@@ -1428,36 +1443,35 @@
   .form-field input:focus,
   .form-field select:focus {
     outline: none;
-    border-color: var(--interaction-deep);
-    box-shadow: 0 0 0 3px rgba(95, 255, 138, 0.25);
+    border-color: #057a28;
+    box-shadow: 0 0 0 3px rgba(0, 255, 100, 0.2);
   }
   .form-field select {
     appearance: none;
     -webkit-appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%230A1A10' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23002910' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: right 20px center;
     padding-right: 44px;
   }
-  .form-submit { margin-top: 8px; width: 100%; }
+  .form-submit { margin-top: 16px; width: 100%; }
   .form-fine-print {
-    font-size: 12px;
-    color: rgba(255, 255, 255, 0.55);
-    margin-top: 4px;
+    font-size: 13px;
+    color: #5A6157;
+    margin-top: 12px;
     text-align: center;
   }
-
   .form-success {
     text-align: center;
     padding: 20px 0;
-    color: var(--white);
+    color: #002910;
   }
   .form-success h3 {
-    font-size: 24px;
-    color: var(--white);
+    font-size: 28px;
+    color: #002910;
     margin-bottom: 12px;
   }
-  .form-success p { color: rgba(255, 255, 255, 0.72); font-size: 15px; }
+  .form-success p { color: #01200d; font-size: 16px; }
 
   @media (max-width: 900px) {
     .form-section { padding: 24px 20px 60px; }
@@ -1505,41 +1519,41 @@
     <div class="form-visual-col">
       <div class="report-book" aria-label="360 AEO Scorecard report cover">
         <svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
-          <rect x="14" y="22" width="372" height="470" rx="6" fill="#0A2210"/>
-          <rect x="6" y="10" width="380" height="478" rx="6" fill="#0F2E1B"/>
-          <rect x="6" y="10" width="14" height="478" rx="6" fill="#0A1A10"/>
-          <line x1="20" y1="10" x2="20" y2="488" stroke="#1a4a2b" stroke-width="1"/>
+          <rect x="14" y="22" width="372" height="470" rx="6" fill="#001408"/>
+          <rect x="6" y="10" width="380" height="478" rx="6" fill="#00250e"/>
+          <rect x="6" y="10" width="14" height="478" rx="6" fill="#000d05"/>
+          <line x1="20" y1="10" x2="20" y2="488" stroke="#057a28" stroke-width="1"/>
 
-          <text x="46" y="56" fill="#C5EDD5" font-family="DM Mono, Courier New, monospace" font-size="10" letter-spacing="2">AIROPS  ·  REPORT</text>
+          <text x="46" y="56" fill="#c0ffd2" font-family="'Saans Mono', 'DM Mono', monospace" font-size="10" letter-spacing="2">AIROPS  ·  REPORT</text>
 
-          <text x="46" y="120" fill="#F4F0E5" font-family="Georgia, serif" font-size="40" letter-spacing="-1">360&#176;</text>
-          <text x="46" y="158" fill="#F4F0E5" font-family="Georgia, serif" font-size="28" letter-spacing="-0.5">AEO Strategy</text>
-          <text x="46" y="190" fill="#F4F0E5" font-family="Georgia, serif" font-size="28" letter-spacing="-0.5">Scorecard</text>
+          <text x="46" y="120" fill="#f8fffa" font-family="'Serrif', Georgia, serif" font-size="40" letter-spacing="-1">360&#176;</text>
+          <text x="46" y="158" fill="#f8fffa" font-family="'Serrif', Georgia, serif" font-size="28" letter-spacing="-0.5">AEO Strategy</text>
+          <text x="46" y="190" fill="#f8fffa" font-family="'Serrif', Georgia, serif" font-size="28" letter-spacing="-0.5">Scorecard</text>
 
-          <line x1="46" y1="220" x2="354" y2="220" stroke="#1a4a2b" stroke-width="1"/>
+          <line x1="46" y1="220" x2="354" y2="220" stroke="#057a28" stroke-width="1"/>
 
           <g transform="translate(200, 320)">
-            <polygon points="0,-78 67,-39 67,39 0,78 -67,39 -67,-39" fill="none" stroke="#1f4d31" stroke-width="1"/>
-            <polygon points="0,-58 50,-29 50,29 0,58 -50,29 -50,-29" fill="none" stroke="#1f4d31" stroke-width="1"/>
-            <polygon points="0,-38 33,-19 33,19 0,38 -33,19 -33,-19" fill="none" stroke="#1f4d31" stroke-width="1"/>
-            <line x1="0" y1="-78" x2="0" y2="78" stroke="#1f4d31" stroke-width="0.5"/>
-            <line x1="-67" y1="-39" x2="67" y2="39" stroke="#1f4d31" stroke-width="0.5"/>
-            <line x1="-67" y1="39" x2="67" y2="-39" stroke="#1f4d31" stroke-width="0.5"/>
-            <polygon points="0,-68 55,-31 60,35 0,62 -58,33 -55,-32" fill="rgba(240,215,240,0.18)" stroke="#F0D7F0" stroke-width="1" stroke-dasharray="3 3"/>
-            <polygon points="0,-44 40,-22 58,33 0,48 -45,27 -40,-23" fill="rgba(95,255,138,0.28)" stroke="#5FFF8A" stroke-width="1.5"/>
-            <circle cx="0" cy="-44" r="3" fill="#5FFF8A"/>
-            <circle cx="40" cy="-22" r="3" fill="#5FFF8A"/>
-            <circle cx="58" cy="33" r="3" fill="#5FFF8A"/>
-            <circle cx="0" cy="48" r="3" fill="#5FFF8A"/>
-            <circle cx="-45" cy="27" r="3" fill="#5FFF8A"/>
-            <circle cx="-40" cy="-23" r="3" fill="#5FFF8A"/>
+            <polygon points="0,-78 67,-39 67,39 0,78 -67,39 -67,-39" fill="none" stroke="#057a28" stroke-width="1"/>
+            <polygon points="0,-58 50,-29 50,29 0,58 -50,29 -50,-29" fill="none" stroke="#057a28" stroke-width="1"/>
+            <polygon points="0,-38 33,-19 33,19 0,38 -33,19 -33,-19" fill="none" stroke="#057a28" stroke-width="1"/>
+            <line x1="0" y1="-78" x2="0" y2="78" stroke="#057a28" stroke-width="0.5"/>
+            <line x1="-67" y1="-39" x2="67" y2="39" stroke="#057a28" stroke-width="0.5"/>
+            <line x1="-67" y1="39" x2="67" y2="-39" stroke="#057a28" stroke-width="0.5"/>
+            <polygon points="0,-68 55,-31 60,35 0,62 -58,33 -55,-32" fill="rgba(192,255,210,0.12)" stroke="#c0ffd2" stroke-width="1" stroke-dasharray="3 3"/>
+            <polygon points="0,-44 40,-22 58,33 0,48 -45,27 -40,-23" fill="rgba(0,255,100,0.28)" stroke="#00ff64" stroke-width="1.5"/>
+            <circle cx="0" cy="-44" r="3" fill="#00ff64"/>
+            <circle cx="40" cy="-22" r="3" fill="#00ff64"/>
+            <circle cx="58" cy="33" r="3" fill="#00ff64"/>
+            <circle cx="0" cy="48" r="3" fill="#00ff64"/>
+            <circle cx="-45" cy="27" r="3" fill="#00ff64"/>
+            <circle cx="-40" cy="-23" r="3" fill="#00ff64"/>
           </g>
 
-          <text x="46" y="450" fill="#9DA298" font-family="DM Mono, Courier New, monospace" font-size="9" letter-spacing="1.5">PREPARED FOR</text>
-          <text x="46" y="470" fill="#F4F0E5" font-family="Georgia, serif" font-size="16">[ Your brand ]</text>
+          <text x="46" y="450" fill="#a5aab6" font-family="'Saans Mono', 'DM Mono', monospace" font-size="9" letter-spacing="1.5">PREPARED FOR</text>
+          <text x="46" y="470" fill="#f8fffa" font-family="'Serrif', Georgia, serif" font-size="16">[ Your brand ]</text>
 
-          <rect x="300" y="448" width="54" height="22" rx="3" fill="#5FFF8A"/>
-          <text x="327" y="463" fill="#0A1A10" font-family="DM Mono, Courier New, monospace" font-size="10" font-weight="600" letter-spacing="1" text-anchor="middle">2026</text>
+          <rect x="300" y="448" width="54" height="22" rx="3" fill="#00ff64"/>
+          <text x="327" y="463" fill="#000d05" font-family="'Saans Mono', 'DM Mono', monospace" font-size="10" font-weight="600" letter-spacing="1" text-anchor="middle">2026</text>
         </svg>
       </div>
 
@@ -1551,7 +1565,7 @@
             <span class="value-num">1</span>
             <div>
               <strong>Your AEO readiness score</strong>
-              <p>A 7-pillar diagnostic &mdash; freshness, schema, entity signals, citation worthiness, offsite presence &mdash; benchmarked against your top 5 competitors.</p>
+              <p>A 7-pillar diagnostic across freshness, schema, entity signals, citation worthiness, and offsite presence. Benchmarked against your top 5 competitors.</p>
             </div>
           </li>
           <li>
@@ -1628,7 +1642,7 @@
       </form>
 
       <div class="form-success" id="form-success" hidden>
-        <h3 class="serif">Thanks &mdash; your scorecard is on its way.</h3>
+        <h3 class="serif">Thanks. Your scorecard is on its way.</h3>
         <p>Our team will deliver your custom 360 AEO Scorecard within 5 business days. Keep an eye on your inbox.</p>
       </div>
     </div>
@@ -1647,7 +1661,7 @@
       <div class="proof-metric">+79%</div>
       <div class="proof-label">Higher conversion rate</div>
       <div class="proof-footer">
-        <span class="proof-brand">Angi</span>
+        <span class="proof-brand"><img src="https://cdn.brandfetch.io/domain/angi.com/w/600/h/180/fallback/transparent/type/logo?c=1ids_5G-Qg7zNH8A-tg" alt="Angi" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'Angi',style:'font-family:Saans,Inter,sans-serif;font-weight:700;font-size:32px'}))"></span>
         <a href="https://www.airops.com/blog/angi-customer-story" target="_blank" class="proof-link">Case study &rarr;</a>
       </div>
     </div>
@@ -1655,7 +1669,7 @@
       <div class="proof-metric">+71%</div>
       <div class="proof-label">Increase in AI search citations</div>
       <div class="proof-footer">
-        <span class="proof-brand">asana</span>
+        <span class="proof-brand"><img src="https://cdn.brandfetch.io/domain/asana.com/w/600/h/180/fallback/transparent/type/logo?c=1ids_5G-Qg7zNH8A-tg" alt="Asana" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'asana',style:'font-family:Saans,Inter,sans-serif;font-weight:700;font-size:32px'}))"></span>
         <a href="https://www.airops.com/blog/asana-quill-story" target="_blank" class="proof-link">Case study &rarr;</a>
       </div>
     </div>
@@ -1663,7 +1677,7 @@
       <div class="proof-metric">3x</div>
       <div class="proof-label">Increase in AI search citations</div>
       <div class="proof-footer">
-        <span class="proof-brand">chime</span>
+        <span class="proof-brand"><img src="https://cdn.brandfetch.io/domain/chime.com/w/600/h/180/fallback/transparent/type/logo?c=1ids_5G-Qg7zNH8A-tg" alt="Chime" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'chime',style:'font-family:Saans,Inter,sans-serif;font-weight:700;font-size:32px'}))"></span>
         <a href="https://www.airops.com/blog/chime-quill-story" target="_blank" class="proof-link">Case study &rarr;</a>
       </div>
     </div>
@@ -1671,7 +1685,7 @@
       <div class="proof-metric">+500%</div>
       <div class="proof-label">AI-attributed signups</div>
       <div class="proof-footer">
-        <span class="proof-brand">Webflow</span>
+        <span class="proof-brand"><img src="https://cdn.brandfetch.io/domain/webflow.com/w/600/h/180/fallback/transparent/type/logo?c=1ids_5G-Qg7zNH8A-tg" alt="Webflow" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'Webflow',style:'font-family:Saans,Inter,sans-serif;font-weight:700;font-size:32px'}))"></span>
         <a href="https://www.airops.com/blog/webflow-case-study" target="_blank" class="proof-link">Case study &rarr;</a>
       </div>
     </div>
@@ -1679,7 +1693,7 @@
       <div class="proof-metric">7x</div>
       <div class="proof-label">Increase in AI search citations</div>
       <div class="proof-footer">
-        <span class="proof-brand">carta</span>
+        <span class="proof-brand"><img src="https://cdn.brandfetch.io/domain/carta.com/w/600/h/180/fallback/transparent/type/logo?c=1ids_5G-Qg7zNH8A-tg" alt="Carta" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'carta',style:'font-family:Saans,Inter,sans-serif;font-weight:700;font-size:32px'}))"></span>
         <a href="https://www.airops.com/blog/carta-case-study" target="_blank" class="proof-link">Case study &rarr;</a>
       </div>
     </div>
